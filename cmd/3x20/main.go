@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/gen2brain/beeep"
+	"github.com/J0eppp/3x20/pkg/beep"
 	"time"
 )
 
 func main() {
 	fmt.Println("3x20 is now running!")
-	err := beeep.Alert("3x20", "You have looked for 20 minutes at your screen, now please look away for 20 seconds 20 meters away", "assets/warning.png")
+	err := beep.Alert("3x20", "You have looked for 20 minutes at your screen, now please look away for 20 seconds 20 meters away")
+	//err := beeep.Alert("3x20", "You have looked for 20 minutes at your screen, now please look away for 20 seconds 20 meters away", "assets/warning.png")
 	if err != nil {
 		panic(err)
 	}
@@ -27,7 +28,9 @@ func main() {
 			newEndTime := time.Now().Add(20 * time.Second)
 			for true {
 				if time.Now().After(newEndTime) {
-					err = beeep.Notify("3x20", "You can continue working now!", "assets/information.png")
+					beep.
+					err = beep.Warn("3x20", "You can continue working now!")
+					//err = beeep.Notify("3x20", "You can continue working now!", "assets/information.png")
 					if err != nil {
 						panic(err)
 					}
